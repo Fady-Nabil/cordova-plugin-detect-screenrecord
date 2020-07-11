@@ -11,6 +11,10 @@ extern NSString *kScreenRecordingDetectorRecordingStatusChangedNotification;
 
 - (void)detectscreenrecord:(CDVInvokedUrlCommand*)command;
 
+@end
+
+@interface ScreenRecordingDetector : NSObject
+
 +(instancetype)sharedInstance;
 + (void)triggerDetectorTimer;
 + (void)stopDetectorTimer;

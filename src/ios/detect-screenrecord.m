@@ -6,24 +6,19 @@
 float const kScreenRecordingDetectorTimerInterval = 1.0;
 NSString *kScreenRecordingDetectorRecordingStatusChangedNotification = @"kScreenRecordingDetectorRecordingStatusChangedNotification";
 
-@interface detectscreenrecord()
+
+@interface ScreenRecordingDetector()
+
 
 @property BOOL lastRecordingState;
 @property NSTimer *timer;
 
+
 @end
 
 
-@implementation detectscreenrecord
-- (void)pluginInitialize
-{
-    if ([[ScreenRecordingDetector sharedInstance] isRecording]) {
-        exit(0);
+@implementation ScreenRecordingDetector
 
-    } else {
-        // recording stopped
-    }   
-}
 
 + (instancetype)sharedInstance {
   static ScreenRecordingDetector *sharedInstance = nil;
@@ -85,4 +80,19 @@ NSString *kScreenRecordingDetectorRecordingStatusChangedNotification = @"kScreen
     detector.timer = NULL;
   }
 }
+@end
+
+
+@implementation detectscreenrecord
+- (void)pluginInitialize
+{
+    if ([[ScreenRecordingDetector sharedInstance] isRecording]) {
+        exit(0);
+
+    } else {
+        // recording stopped
+    }   
+}
+
+ScreenRecordingDetector *screenRecordingDetector(void);
 @end
